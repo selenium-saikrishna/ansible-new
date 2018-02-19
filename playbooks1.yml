@@ -1,0 +1,15 @@
+
+---
+- name: Creating directory and copying passwd file
+  hosts: all
+  tasks:
+   - name: Creating directory
+     file:
+      name: newdir
+      state: directory
+   - name: Copying passwd file
+     copy:
+      src: /etc/passwd
+      dest: newdir
+
+...

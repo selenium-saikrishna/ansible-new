@@ -1,0 +1,29 @@
+
+
+---
+- name: Configuring apache2
+  hosts: dbserver
+  tasks:
+   - name: Installing apache2
+     apt:
+      name: apache2
+      state: present
+   - name: Edit index.html file
+     copy:
+      content: This is the default page of intelliq
+      dest: /var/www/html/index.html
+   - name: Restarting apache2
+     service:
+      name: apache2
+      state: restarted
+   - name: Checking page reachable
+     uri:
+      url: http://192.168.60.55
+      status: 200
+  
+
+
+
+
+
+...

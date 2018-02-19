@@ -1,0 +1,19 @@
+---
+- name: Working on git
+  hosts: 192.168.60.22
+  tasks:
+   - name: Cloning the remote git repo
+     git:
+      repo: "https://github.com/selenium-saikrishna/maven.git"
+      clone: yes
+      dest: /home/vagrant/mygit
+   - name: Fetching readme.md file
+     fetch:
+      src: /home/vagrant/mygit/README.md
+      dest: /home/vagrant
+
+
+
+
+
+...

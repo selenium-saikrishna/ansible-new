@@ -1,0 +1,49 @@
+---
+- name: Implementing CI-CD
+  hosts: 192.168.60.22
+  tasks:
+   - name: Download the remote git repo
+     git:
+      repo: "https://github.com/selenium-saikrishna/maven.git"
+      clone: yes
+      dest: /home/vagrant/mygit
+   - name: Installing jdk
+     apt:
+      name: default-jdk
+      state: present
+   - name: Installing maven
+     apt:
+      name: maven
+      state: present
+   - name: Create a artifact using maven
+     shell: /home/vagrant/script.sh
+   - name: Fetching the war file from the dev server
+     fetch:
+      src: /home/vagrant/mygit/webapp/target/webapp.war
+      dest: /home/vagrant
+- name: Deployment into QA and testing
+  hosts: 192.168.60.23
+  tasks:
+   - name: copy the artifact into qa server
+     copy:
+      src: /home/vagrant/192.168.60.22/home/vagrant/mygit/webapp/target/webapp.war
+      dest: /var/lib/tomcat7/webapps/qaenv.war 
+   - name: Downloading the selenium testing programs from git
+     git:
+      repo: "https://github.com/selenium-saikrishna/testing.git"
+      clone: yes
+      dest: /home/vagrant/testing_git    
+   - name: Run the selenium testing jar file
+     shell: java -jar /home/vagrant/testing_git/testing.jar
+- name: Deploying into prod env
+  hosts: 192.168.60.24
+  tasks:
+   - name: Deploying into prod env 
+     copy:
+      src: /home/vagrant/192.168.60.22/home/vagrant/mygit/webapp/target/webapp.war   
+      dest: /var/lib/tomcat7/webapps/prodenv.war
+
+
+
+
+...
