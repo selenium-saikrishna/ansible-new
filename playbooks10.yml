@@ -1,0 +1,12 @@
+
+---
+- name: user management
+  hosts: 192.168.60.24
+  tasks:
+   - name: creating a user account
+     user:
+      name: "{{a}}"
+      password: "{{b}}"
+      home: "{{c}}"
+      shell: "{{d}}"
+...

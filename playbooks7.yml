@@ -1,0 +1,15 @@
+
+
+
+
+---
+- name: creating file/directories
+  hosts: all
+  tasks:
+   - name: file management
+     file:
+      name: "{{a}}"
+      state: "{{b}}"
+      owner: "{{c}}"
+      group: "{{d}}"
+      mode: "{{e}}"

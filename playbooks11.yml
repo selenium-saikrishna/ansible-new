@@ -1,0 +1,19 @@
+---
+- name: Installing/uninstalling  packages
+  hosts: 192.168.60.22
+  tasks:
+   - name: package management
+     apt:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      update_cache: "{{item.c}}"
+     with_items:
+      - {a: apache2,b: present,c: no}
+      - {a: tree,b: absent,c: no}
+      - {a: git,b: present,c: yes}
+
+
+
+
+
+...

@@ -1,0 +1,20 @@
+---
+- name: Creating files and directories
+  hosts: all
+  tasks:
+   - name: file management
+     file:
+      name: "{{item.a}}"
+      state: "{{item.b}}"
+      owner: "{{item.c}}"
+      group: "{{item.d}}"
+      mode: "{{item.e}}"
+     with_items:
+      - {a: f1,b: directory,c: intelliq,d: root,e: 765}
+      - {a: f1/file1,b: touch,c: root,d: vagrant,e: 777}
+
+
+
+
+
+...

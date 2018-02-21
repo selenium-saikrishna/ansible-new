@@ -1,0 +1,12 @@
+---
+- name: Using host scope varaibles
+  hosts: dbserver
+  tasks:
+   - name: uninstalling apache2
+     apt:
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+
+
+...

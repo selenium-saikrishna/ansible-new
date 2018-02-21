@@ -1,0 +1,25 @@
+
+
+
+---
+- name: User management
+  hosts: all
+  tasks:
+   - name: Creating user
+     user:
+      name: intelliq
+      password: abc
+      home: /home/vagrant
+      shell: /bin/bash
+   - name: capturing user info
+     shell: grep intelliq /etc/passwd > file1
+   - name: Fetching the file
+     fetch:
+      src: /home/vagrant/file1
+      dest: /home/vagrant
+
+
+
+
+
+...

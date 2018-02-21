@@ -1,0 +1,17 @@
+
+
+---
+- name: Installing or unstalling packages
+  hosts: 192.168.60.23
+  tasks:
+   - name: Package management
+     apt:
+      name: "{{a}}"
+      state: "{{b}}"
+      update_cache: "{{c}}"
+
+
+
+
+
+...
