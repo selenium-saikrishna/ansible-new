@@ -1,0 +1,19 @@
+
+
+
+---
+- name: Implementing when
+  hosts: all
+  vars:
+   a: 10
+  tasks:
+   - name: create user
+     user:
+      name: intelliquser
+      password: abcxyz
+     when: a==10
+
+
+
+
+...

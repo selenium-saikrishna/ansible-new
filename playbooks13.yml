@@ -1,0 +1,12 @@
+---
+- name: Installing maven
+  apt:
+   name: maven
+   state: present
+   update_cache: no
+
+
+
+
+
+...

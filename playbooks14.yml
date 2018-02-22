@@ -1,0 +1,8 @@
+---
+- name: calling other playbooks
+  hosts: 192.168.60.55
+  tasks:
+   - include:
+      playbooks13.yml
+
+...
