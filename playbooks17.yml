@@ -1,0 +1,20 @@
+---
+- name: Checking for dir and creating a file
+  hosts: 192.168.60.22
+  tasks:
+   - name: Find the stats of a dir
+     stat:
+      path: /home/vagrant/dir123
+     register: result
+   - name: displaying result
+     debug:
+      var: result
+   - name: creating file
+     file:
+      name: /home/vagrant/dir123/file123
+      state: touch
+     when:
+      result.stat.exists==true
+
+
+...

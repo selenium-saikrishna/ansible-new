@@ -1,0 +1,21 @@
+---
+- name: Checking for dir and creating a file
+  hosts: 192.168.60.22
+  tasks:
+   - name: check for the user
+     stat:
+      path: /home/intelliq6
+     register: result   
+   - name: displaying result
+     debug:
+      var: result
+   - name: modifing user
+     user:
+      name: intelliiq6
+      password: xyz
+      home: /home/vagrant
+     when:
+      result.stat.exists==true
+
+
+...

@@ -1,0 +1,26 @@
+---
+- name: Tagging fo modules
+  hosts: 192.168.60.22
+  tasks:
+   - name: Installing tree
+     apt:
+      name: tree
+      state: present
+     tags:
+      tree_installation
+   - name: Creating files
+     file:
+      name: tagfile
+      state: touch
+     tags:
+      file_creation
+   - name: Install git
+     apt:
+      name: git
+      state: present 
+ 
+
+
+
+
+...

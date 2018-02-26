@@ -1,0 +1,40 @@
+---
+- name: Configuring apache2
+  hosts: 192.168.60.22
+  tasks:
+   - name: Install apache2
+     apt:
+      name: apache2
+      state: present
+     notify: url_response
+   - name: Edit index.html file
+     copy:
+      content: "Welcome to my new intelliq"
+      dest: /var/www/html/index.html
+     notify: restart_apache2
+  handlers:
+   - name: restart_apache2
+     service:
+      name: apache2
+      state: restarted
+   - name: url_response
+     uri:
+      url: http://192.168.60.22
+      status: 200
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+...

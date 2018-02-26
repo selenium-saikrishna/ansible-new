@@ -1,0 +1,15 @@
+---
+- name: using debug module
+  hosts: 192.168.60.22
+  tasks:
+   - name: uninstalaling firewalld
+     apt:
+      name: firewalld
+      state: absent
+     register: result
+   - name: Display the output
+     debug:
+      var: result
+
+
+...
