@@ -3,6 +3,7 @@
 ---
 - name: Configuring apache2
   hosts: dbserver
+  gather_facts: false
   tasks:
    - name: Installing apache2
      apt:

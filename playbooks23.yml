@@ -1,0 +1,9 @@
+---
+- name: Installing docker on all the managed hosts
+  hosts: all
+  become: yes
+  tasks:
+   - name: download the docker script
+     shell: curl -fsSL get.docker.com -o get-docker.sh
+   - name: run the shell script
+     shell: sh get-docker.sh

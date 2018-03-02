@@ -1,0 +1,24 @@
+---
+- name: Error Handling
+  hosts: 192.168.60.23
+  tasks:
+   - block:
+      - name: Installing apache
+        apt:
+         name: apache1 
+         state: present
+     rescue:
+      - debug:
+         msg: "Unable to install apache"
+     always:
+      - debug:
+         msg: "Continue with other modules"
+
+
+
+
+
+...
+
+
+
